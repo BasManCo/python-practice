@@ -11,6 +11,8 @@ BG = pygame.transform.scale(pygame.image.load("bg.jpg"), (WIDTH, HEIGHT))
 PLAYER_WIDTH = 40
 PLAYER_HEIGHT = 60
 
+PLAYER_VELOCITY = 3
+
 def draw(player):
     WIN.blit(BG,(0,0))
 
@@ -28,6 +30,13 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
                 break
+
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            player.x -= PLAYER_VELOCITY
+        if keys[pygame.K_RIGHT]:
+            player.x += PLAYER_VELOCITY
+
 
         draw(player)
 
